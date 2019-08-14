@@ -1,8 +1,15 @@
 version: 2
 jobs:
  build:
+   working_directory: ~/adder
    docker:
      - image: circleci/python:3.7.4
    steps:
      - checkout
-     - run: echo "Test echo"
+     - run:
+        command: |
+            sudo pip install pipenv
+            pipenv install
+     - run:
+        command: |
+          pipenv run python -m unittest discover ./tests
