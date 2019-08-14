@@ -4,8 +4,8 @@ jobs:
    working_directory: ~/adder
    docker:
      - image: circleci/python:3.7.4
-        environment:
-          PIPENV_VENV_IN_PROJECT: true
+       environment: # environment variables for primary container
+         PIPENV_VENV_IN_PROJECT: true
 
    steps:
      - checkout
@@ -16,6 +16,7 @@ jobs:
      - restore_cache:
         key: ci-{{ .Branch }}-{{ checksum "Pipfile.lock" }}
 
+     # install pipenv
      - run:
         command: |
             sudo pip install pipenv
