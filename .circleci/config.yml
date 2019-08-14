@@ -4,8 +4,9 @@ jobs:
    working_directory: ~/adder
    docker:
      - image: circleci/python:3.7.4
-     - environment:
-         PIPENV_VENV_IN_PROJECT: true
+        environment:
+          PIPENV_VENV_IN_PROJECT: true
+
    steps:
      - checkout
 
